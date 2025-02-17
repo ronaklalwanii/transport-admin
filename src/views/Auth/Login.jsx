@@ -37,7 +37,7 @@ const LoginPage = () => {
     if (hasUser && hasUser.password === data.password) {
       localStorage.setItem("userData", JSON.stringify(hasUser));
       await dispatch(loginUser(hasUser));
-      navigate("/");
+      navigate(data.email.includes("admin") ? "/" : "/trips");
     } else {
       setError("email", {
         type: "manual",

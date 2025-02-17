@@ -4,6 +4,7 @@ import MainLayout from "../layout/MainLayout";
 
 import Drivers from "../views/Drivers";
 import Dashboard from "../views/Dashboard";
+import Trips from "../views/Trips";
 
 const routes = [
   {
@@ -14,6 +15,10 @@ const routes = [
   {
     path: "/drivers",
     element: <Drivers />,
+  },
+  {
+    path: "/trips",
+    element: <Trips />,
   },
 ];
 

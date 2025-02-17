@@ -5,8 +5,8 @@ export const users = [
     role: "admin",
   },
   {
-    email: "operator@email.com",
-    password: "operator@123",
-    role: "operator",
+    email: "driver@email.com",
+    password: "driver@123",
+    role: "driver",
   },
 ];

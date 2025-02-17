@@ -1,3 +1,5 @@
+import { useSelector } from "react-redux";
+
 import List from "@mui/material/List";
 
 import SidebarItem from "./SidebarItem";
@@ -7,6 +9,7 @@ import SidebarSection from "./SidebarSection";
 import { navigation } from "@/configurations/navigation";
 
 const SidebarList = (props) => {
+  const { userData } = useSelector((state) => state.auth);
   const recursiveSidebarItems = (arr) => {
     return arr.map((item, index) => {
       return item.section ? (
@@ -20,7 +23,7 @@ const SidebarList = (props) => {
   };
   return (
     <List component="nav" disablePadding sx={{ py: 3 }}>
-      {recursiveSidebarItems(navigation)}
+      {recursiveSidebarItems(navigation[userData.email])}
     </List>
   );
 };
