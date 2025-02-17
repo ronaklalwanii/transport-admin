@@ -40,7 +40,7 @@ const SidebarItem = (props) => {
       splitItemUrl?.splice(splitItemUrl.length - 1, 1);
       return splitPath?.every((i) => splitItemUrl?.includes(i));
     } else {
-      false;
+      return false;
     }
   };
 
@@ -56,7 +56,7 @@ const SidebarItem = (props) => {
   return (
     <ListItem disablePadding sx={{ pl: isSubMenu ? 2 : 0 }}>
       <ListItemButton
-        href={url}
+        to={url}
         disableRipple
         LinkComponent={Link}
         onClick={handleMenuItemClick}
@@ -85,8 +85,10 @@ const SidebarItem = (props) => {
         </ListItemIcon>
         <ListItemText
           primary={title}
-          primaryTypographyProps={{
-            sx: isActive() ? { color: "primary.main", fontWeight: 600 } : {},
+          slotProps={{
+            primary: {
+              sx: isActive() ? { color: "primary.main", fontWeight: 600 } : {},
+            },
           }}
         />
       </ListItemButton>

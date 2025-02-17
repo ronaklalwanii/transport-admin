@@ -8,6 +8,8 @@ import Navbar from "./navbar";
 import Sidebar from "./sidebar";
 
 import templateConfigurations from "@/configurations/template";
+import { useSelector } from "react-redux";
+import { Navigate } from "react-router";
 
 const { sidebarWidth, foldedSidebarWidth } = templateConfigurations;
 
@@ -35,6 +37,8 @@ const Main = styled(Box, { shouldForwardProp: (prop) => prop !== "open" })(
 );
 
 const MainLayout = ({ children }) => {
+  const { userData } = useSelector((state) => state.auth);
+
   const [sidebarHidden, setSidebarHidden] = useState(true);
   const [sidebarFolded, setSidebarFolded] = useState(false);
 
@@ -51,24 +55,28 @@ const MainLayout = ({ children }) => {
     }
   }, [isBelowLg]); // eslint-disable-line
 
-  return (
-    <div>
-      <Navbar
-        isBelowLg={isBelowLg}
-        sidebarHidden={sidebarHidden}
-        sidebarFolded={sidebarFolded}
-        setSidebarFolded={setSidebarFolded}
-        setSidebarHidden={setSidebarHidden}
-      />
-      <Sidebar
-        isBelowLg={isBelowLg}
-        sidebarHidden={sidebarHidden}
-        sidebarFolded={sidebarFolded}
-        setSidebarHidden={setSidebarHidden}
-      />
-      <Main open={sidebarFolded}>{children}</Main>
-    </div>
-  );
+  if (!userData) {
+    return <Navigate to="/login" />;
+  } else {
+    return (
+      <div>
+        <Navbar
+          isBelowLg={isBelowLg}
+          sidebarHidden={sidebarHidden}
+          sidebarFolded={sidebarFolded}
+          setSidebarFolded={setSidebarFolded}
+          setSidebarHidden={setSidebarHidden}
+        />
+        <Sidebar
+          isBelowLg={isBelowLg}
+          sidebarHidden={sidebarHidden}
+          sidebarFolded={sidebarFolded}
+          setSidebarHidden={setSidebarHidden}
+        />
+        <Main open={sidebarFolded}>{children}</Main>
+      </div>
+    );
+  }
 };
 
 export default MainLayout;

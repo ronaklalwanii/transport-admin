@@ -60,7 +60,7 @@ const LayoutSidebar = (props) => {
           <Box sx={{ gap: 0.5, display: "flex", alignItems: "center" }}>
             <Box sx={{ mt: 1, ml: -1 }}>{templateConfigurations.logo}</Box>
             {!sidebarFolded ? (
-              <Typography variant="h5">
+              <Typography variant="h5" sx={{ color: "text.primary" }}>
                 {templateConfigurations.companyName}
               </Typography>
             ) : null}

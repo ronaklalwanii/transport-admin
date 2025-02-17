@@ -1,12 +1,19 @@
 import { Route, Routes } from "react-router-dom";
-import App from "../App";
+
 import MainLayout from "../layout/MainLayout";
+
+import Drivers from "../views/Drivers";
+import Dashboard from "../views/Dashboard";
 
 const routes = [
   {
     index: true,
     path: "/",
-    element: <App />,
+    element: <Dashboard />,
+  },
+  {
+    path: "/drivers",
+    element: <Drivers />,
   },
 ];
 
