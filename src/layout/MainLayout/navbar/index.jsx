@@ -17,6 +17,7 @@ import { BiMenu, BiChevronsLeft } from "react-icons/bi";
 
 import templateConfigurations from "@/configurations/template";
 import { logoutUser } from "@/store/auth";
+import { useSelector } from "react-redux";
 
 const { foldedSidebarWidth, sidebarWidth } = templateConfigurations;
 
@@ -51,6 +52,8 @@ const LayoutNavbar = (props) => {
     setSidebarFolded,
     setSidebarHidden,
   } = props;
+
+  const { userData } = useSelector((state) => state.auth);
 
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
@@ -137,7 +140,9 @@ const LayoutNavbar = (props) => {
             }}
           >
             <MenuItem disabled sx={{ py: 0 }}>
-              <Typography>Admin</Typography>
+              <Typography sx={{ textTransform: "capitalize" }}>
+                {userData?.role || "Admin"}
+              </Typography>
             </MenuItem>
             <Divider />
             <MenuItem onClick={handleLogout}>Logout</MenuItem>

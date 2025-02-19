@@ -29,8 +29,8 @@ const initialState = {
   ],
 };
 
-const dashboardSlice = createSlice({
-  name: "dashboard",
+const DriverSlice = createSlice({
+  name: "Driver",
   initialState,
   reducers: {
     createDriver: (state, action) => {
@@ -39,6 +39,6 @@ const dashboardSlice = createSlice({
   },
 });
 
-export const { createDriver } = dashboardSlice.actions;
+export const { createDriver } = DriverSlice.actions;
 
-export default dashboardSlice.reducer;
+export default DriverSlice.reducer;

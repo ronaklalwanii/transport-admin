@@ -22,7 +22,7 @@ export const navigation = {
       icon: "BiMap",
       id: "trips",
       title: "Trips",
-      url: "/trips",
+      url: "/admin-trips",
     },
     {
       icon: "BiFile",

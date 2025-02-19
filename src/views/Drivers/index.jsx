@@ -124,7 +124,7 @@ const Drivers = () => {
         <DialogTitle>Create New Driver</DialogTitle>
         <DialogContent>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <Box>
+            <Box sx={{ pt: 1 }}>
               <Controller
                 name="firstName"
                 control={control}
