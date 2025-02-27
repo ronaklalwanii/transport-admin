@@ -11,6 +11,7 @@ import {
 } from "@mui/material";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { useMediaQuery } from "@mui/material";
 
 const steps = [
   "Trip Info",
@@ -46,6 +47,8 @@ const StepForm = () => {
   const tollTax = watch("tollTax") || 0;
   const miscellaneous = watch("miscellaneous") || 0;
 
+  const isBelowSM = useMediaQuery((theme) => theme.breakpoints.down("sm"));
+
   React.useEffect(() => {
     if (fuelLitres) {
       setValue("fuelAmount", fuelLitres * 100);
@@ -76,10 +79,14 @@ const StepForm = () => {
       }}
     >
       <Stepper
+        orientation={isBelowSM ? "vertical" : "horizontal"}
         activeStep={activeStep}
-        alternativeLabel
+        alternativeLabel={!isBelowSM}
         sx={{
           mb: 4,
+          "& .MuiStepConnector-line": {
+            minHeight: "20px",
+          },
         }}
       >
         {steps.map((label, index) => (

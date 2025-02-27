@@ -51,93 +51,79 @@ const LoginPage = () => {
   };
 
   return (
-    <Grid container sx={{ height: "100vh" }}>
-      <Grid
-        item
-        md={6}
-        sx={{ display: { xs: "none", md: "flex" }, justifyContent: "center" }}
+    <Box container sx={{ height: "100vh", maxWidth: 540, mx: "auto" }}>
+      <Box
+        sx={{
+          py: 4,
+          px: 8,
+          gap: 4,
+          mx: "auto",
+          maxWidth: 600,
+          height: "100%",
+          display: "flex",
+          alignItems: "center",
+          flexDirection: "column",
+          justifyContent: "center",
+        }}
       >
-        <Box
-          width={600}
-          component="img"
-          alt="login-image"
-          src="/images/pages/login.svg"
-        />
-      </Grid>
-      <Grid item xs={12} md={6}>
-        <Box
-          sx={{
-            py: 4,
-            px: 8,
-            gap: 4,
-            mx: "auto",
-            maxWidth: 600,
-            height: "100%",
-            display: "flex",
-            alignItems: "center",
-            flexDirection: "column",
-            justifyContent: "center",
-          }}
-        >
-          <Box sx={{ gap: 1, display: "flex", alignItems: "center" }}>
-            {templateConfigurations.logo}
-            <Typography variant="h5">
-              {templateConfigurations.companyName}
-            </Typography>
-          </Box>
-          <Box component="form" onSubmit={handleSubmit(handleLogin)}>
-            <Typography variant="h5" sx={{ mb: 3, textAlign: "center" }}>
-              Welcome Back!
-            </Typography>
-            <TextField
-              fullWidth
-              type="email"
-              label="Email"
-              {...register("email", {
-                required: "Email is required",
-                pattern: {
-                  value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                  message: "Invalid email address",
-                },
-              })}
-              error={!!errors.email}
-              helperText={errors.email?.message}
-              sx={{ mb: 2 }}
-            />
-            <TextField
-              fullWidth
-              label="Password"
-              type={showPassword ? "text" : "password"}
-              {...register("password", {
-                required: "Password is required",
-                minLength: {
-                  value: 6,
-                  message: "Password must be at least 6 characters",
-                },
-              })}
-              error={!!errors.password}
-              helperText={errors.password?.message}
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <IconButton
-                      edge="end"
-                      onClick={handleClickShowPassword}
-                      onMouseDown={handleMouseDownPassword}
-                    >
-                      {showPassword ? <BiHide /> : <BiShow />}
-                    </IconButton>
-                  </InputAdornment>
-                ),
-              }}
-            />
-            <Button fullWidth sx={{ mt: 4 }} variant="contained" type="submit">
-              Sign In
-            </Button>
-          </Box>
+        <Box sx={{ gap: 1, display: "flex", alignItems: "center" }}>
+          {templateConfigurations.logo}
+          <Typography variant="h5">
+            {templateConfigurations.companyName}
+          </Typography>
         </Box>
-      </Grid>
-    </Grid>
+        <Box component="form" onSubmit={handleSubmit(handleLogin)}>
+          <Typography variant="h5" sx={{ mb: 3, textAlign: "center" }}>
+            Welcome Back!
+          </Typography>
+          <TextField
+            fullWidth
+            type="email"
+            label="Email"
+            {...register("email", {
+              required: "Email is required",
+              pattern: {
+                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                message: "Invalid email address",
+              },
+            })}
+            error={!!errors.email}
+            helperText={errors.email?.message}
+            sx={{ mb: 2 }}
+          />
+          <TextField
+            fullWidth
+            label="Password"
+            type={showPassword ? "text" : "password"}
+            {...register("password", {
+              required: "Password is required",
+              minLength: {
+                value: 6,
+                message: "Password must be at least 6 characters",
+              },
+            })}
+            error={!!errors.password}
+            helperText={errors.password?.message}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton
+                    edge="end"
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                  >
+                    {showPassword ? <BiHide /> : <BiShow />}
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
+          />
+          <Button fullWidth sx={{ mt: 4 }} variant="contained" type="submit">
+            Sign In
+          </Button>
+        </Box>
+      </Box>
+    </Box>
   );
 };
 
